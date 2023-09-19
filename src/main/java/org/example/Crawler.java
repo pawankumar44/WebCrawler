@@ -31,6 +31,7 @@ public class Crawler {
             //timeout-> if fails to connect url then proceed to next url
             Document document = Jsoup.connect(url).timeout(5000).get();
             //Indexer work start here
+            Indexer indexer = new Indexer(document,url);
             System.out.println(document.title());//checking we are getting the links or not
 //          jsoup select element
             //selecting all the link that are present in the document

@@ -10,7 +10,7 @@ public class DatabaseConnection {
     //Connection from java sql
     static Connection connection = null;
     //to set up connection
-    public Connection getConnection(){
+    public static Connection getConnection(){
         if(connection!=null){
             return  connection;
         }
@@ -21,11 +21,11 @@ public class DatabaseConnection {
     }
 
     //overloading
-    private Connection getConnection(String user, String pwd, String db){
+    private static Connection getConnection(String user, String pwd, String db){
         //we need mysql connector j library
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/" + db + "?user=" + user + "&password?=" + pwd);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/" + db + "?user=" + user + "&password=" + pwd);
         }
         catch (SQLException | ClassNotFoundException sqlException){
             sqlException.printStackTrace();

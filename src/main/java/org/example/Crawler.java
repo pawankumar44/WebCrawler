@@ -21,8 +21,12 @@ public class Crawler {
         if(urlSet.contains(url)){
             return;
         }
-        if(depth>MAX_DEPTH){
+        if(depth>=MAX_DEPTH){
             return;
+        }
+        //adding the current url to set
+        if(urlSet.add(url)){
+            System.out.println(url);
         }
         depth++;
         try {
@@ -48,6 +52,6 @@ public class Crawler {
 
     public static void main(String[] args) {
         Crawler crawler = new Crawler();
-        crawler.getPageTextAndLinks("https://www.javatpoint.com/",1);
+        crawler.getPageTextAndLinks("https://www.javatpoint.com",0);
     }
 }
